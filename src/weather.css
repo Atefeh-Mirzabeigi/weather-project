@@ -1,0 +1,74 @@
+.weather {
+  max-width: 50rem;
+  border-radius: 25px;
+  background: white;
+}
+.weather .current-day {
+  border-radius: 25px;
+  background: url(./images/Elephant\ 03.jpg);
+  background-size: 36rem;
+  background-position: top;
+}
+.location {
+  padding: 0.3rem 1.5rem 0 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+  color: white;
+  border-radius: 15px;
+}
+.location p {
+  font-size: 0.5em;
+  margin: 0;
+}
+.location h6 {
+  font-size: 0.8em;
+}
+.location i,
+.search i {
+  font-size: 1.2em;
+  color: white;
+}
+.current-day-status {
+  color: white;
+}
+.current-day-status h1 {
+  font-size: 4.5em;
+  margin-bottom: 0;
+}
+.climate-status {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+.search input,
+.search input:focus,
+.search button {
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  color: white;
+}
+.search input::placeholder {
+  color: white;
+}
+
+.additional-info {
+  color: white;
+}
+.additional-info ul {
+  list-style: none;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.additional-info li {
+  font-size: 1em;
+  margin: 0 1rem;
+}
+.forecast-day {
+  text-align: center;
+  border-radius: 15px;
+  background: #f1c0b8;
+  width: 10rem;
+  height: 3.5rem;
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
