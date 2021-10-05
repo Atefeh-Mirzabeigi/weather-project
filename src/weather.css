@@ -6,8 +6,9 @@
 .weather .current-day {
   border-radius: 25px;
   background: url(./images/Elephant\ 03.jpg);
-  background-size: 36rem;
-  background-position: top;
+  background-size: 39rem;
+  background-position: 100% top;
+  padding-bottom: 2rem;
 }
 .location {
   padding: 0.3rem 1.5rem 0 1.5rem;
@@ -45,6 +46,7 @@
   background: rgba(255, 255, 255, 0.4);
   border: none;
   color: white;
+  border-radius: 15px;
 }
 .search input::placeholder {
   color: white;
@@ -71,4 +73,5 @@
   height: 3.5rem;
   margin: 1rem auto;
   padding: 0.5rem;
+  line-height: 1.3;
 }

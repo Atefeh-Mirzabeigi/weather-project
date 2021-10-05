@@ -6,16 +6,7 @@
     transform: rotate(360deg);
   }
 } */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Yaldevi:wght@300&display=swap");
-body {
-  font-family: "Noto Sans Display", sans-serif;
-  background: linear-gradient(
-    109.6deg,
-    rgb(0, 0, 0) 11.2%,
-    rgb(11, 132, 145) 91.1%
-  );
-}
+
 .App {
   margin: 3rem auto;
   text-align: center;
@@ -23,5 +14,5 @@ body {
 .footer {
   font-size: 0.8em;
   padding: 1rem;
-  color: wheat;
+  color: white;
 }

@@ -6,7 +6,11 @@ function App() {
     <div className="App">
       <Weather />
       <div className="footer">
-        It's an <a>Open-Source</a> project coded by Atefeh Mirzabeigi.
+        It's an{" "}
+        <a href="https://github.com/Atefeh-Mirzabeigi/weather-app">
+          Open-Source
+        </a>{" "}
+        project coded by Atefeh Mirzabeigi.
       </div>
     </div>
   );
