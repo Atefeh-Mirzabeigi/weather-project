@@ -36,6 +36,9 @@
   font-size: 4.5em;
   margin-bottom: 0;
 }
+.current-day-units {
+  font-size: 40px;
+}
 .climate-status {
   font-size: 1.4em;
   margin-bottom: 0;
