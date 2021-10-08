@@ -11,11 +11,31 @@
   padding-bottom: 2rem;
 }
 .location {
-  padding: 0.3rem 1.5rem 0 1.5rem;
+  padding: 0.3rem 1.2rem 0 1rem;
   background: rgba(0, 0, 0, 0.2);
   margin: 1rem;
   color: white;
   border-radius: 15px;
+}
+.units {
+  background: rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  color: white;
+  border-radius: 15px;
+  padding: 0.5rem 0.7rem;
+}
+.units a {
+  text-decoration: none;
+  color: white;
+}
+.units a:hover {
+  color: black;
+}
+.weather-icon {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 0 0.3rem;
+  margin: 1rem 0;
 }
 .location p {
   font-size: 0.5em;
@@ -67,14 +87,4 @@
 .additional-info li {
   font-size: 1em;
   margin: 0 1rem;
-}
-.forecast-day {
-  text-align: center;
-  border-radius: 15px;
-  background: #f1c0b8;
-  width: 10rem;
-  height: 3.5rem;
-  margin: 1rem auto;
-  padding: 0.5rem;
-  line-height: 1.3;
 }

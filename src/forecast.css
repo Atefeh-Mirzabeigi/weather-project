@@ -1,0 +1,10 @@
+.forecast-day {
+  text-align: center;
+  border-radius: 15px;
+  background: #f1c0b8;
+  width: 10rem;
+  height: 3.5rem;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  line-height: 1.3;
+}
