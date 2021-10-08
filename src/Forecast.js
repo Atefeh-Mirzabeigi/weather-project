@@ -6,10 +6,10 @@ export default function Forecast(props) {
   return (
     <div className="Forecast">
       {props.data.map((daily, i) => {
+        const daysOfWeek = ["Mon", "Tue", "Wed", "Thr", "Fri", "Sat", "Sun"];
+        const date = new Date(daily.dt * 1000);
+        const day = daysOfWeek[date.getDay()];
         if (i < 5) {
-          const daysOfWeek = ["Mon", "Tue", "Wed", "Thr", "Fri", "Sat", "Sun"];
-          const date = new Date(daily.dt * 1000);
-          const day = daysOfWeek[date.getDay()];
           return (
             <div key={i} className="forecast-day d-flex justify-content-evenly">
               <h5 className="pt-1">{day}</h5>
@@ -26,6 +26,7 @@ export default function Forecast(props) {
             </div>
           );
         }
+        return null;
       })}
     </div>
   );
