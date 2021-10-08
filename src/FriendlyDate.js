@@ -14,10 +14,10 @@ export default function FriendlyDate(props) {
   let minutes = props.date.getMinutes();
   let hours = props.date.getHours();
   if (minutes < 10) {
-    minutes = 0 + minutes;
+    minutes = "0" + minutes;
   }
   if (hours < 10) {
-    hours = 0 + hours;
+    hours = "0" + hours;
   }
   return (
     <div className="friendlyDate">

@@ -51,8 +51,8 @@ export default function Weather(props) {
   if (weatherData.loaded) {
     return (
       <div className="weather mx-auto">
-        <div className="row rounded">
-          <div className="current-day col-8">
+        <div className="row rounded justify-content-center">
+          <div className="current-day col-md-8 col-sm-12">
             <WeatherInfo data={weatherData} />
             <form onSubmit={handleSubmit}>
               <div className="search text-center d-flex ms-5 me-3">
@@ -75,7 +75,7 @@ export default function Weather(props) {
             </form>
             <AdditionalInfo data={weatherData} />
           </div>
-          <div className="col-4 text-center pt-4">
+          <div className="col-md-4 col-sm-8 text-center py-4">
             <h3 className="py-2">{weatherData.cityName}</h3>
             {dailyWeather.ready ? (
               <Forecast data={dailyWeather.data} />
