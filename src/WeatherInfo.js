@@ -4,18 +4,17 @@ import FriendlyDate from "./FriendlyDate";
 import WeatherIcon from "./WeatherIcon";
 import { useState } from "react/cjs/react.development";
 export default function WeatherInfo(props) {
-  const [temperature, setTemperature] = useState();
-  const [units, setUnits] = useState();
-
+  const [units, setUnits] = useState("°C");
   function handleFahrenheit(event) {
     event.preventDefault();
-    setTemperature((props.data.temp * 9) / 5 + 32);
     setUnits("°F");
   }
-  function handleCelcius(event) {
+  function handleCelsius(event) {
     event.preventDefault();
-    setTemperature(props.data.temp);
     setUnits("°C");
+  }
+  function convertToFahrenheit() {
+    return Math.round((props.data.temp * 9) / 5 + 32);
   }
   return (
     <div className="WeatherInfo">
@@ -25,7 +24,7 @@ export default function WeatherInfo(props) {
             F
           </a>{" "}
           |{" "}
-          <a href="/" onClick={handleCelcius}>
+          <a href="/" onClick={handleCelsius}>
             C
           </a>{" "}
         </div>
@@ -38,10 +37,18 @@ export default function WeatherInfo(props) {
         </div>
       </div>
       <div className="current-day-status text-center">
-        <h1>
-          {Math.round(temperature)}
-          <small> {units}</small>
-        </h1>
+        {units === "°F" ? (
+          <h1>
+            {convertToFahrenheit()}
+            <small> {units}</small>
+          </h1>
+        ) : (
+          <h1>
+            {Math.round(props.data.temp)}
+            <small> {units}</small>
+          </h1>
+        )}
+
         <div className="d-flex justify-content-center">
           <div className="weather-icon d-flex ps-1 pe-3 m-0">
             <WeatherIcon code={props.data.icon} size={40} color="white" />
