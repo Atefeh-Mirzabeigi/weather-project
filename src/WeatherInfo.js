@@ -4,7 +4,7 @@ import FriendlyDate from "./FriendlyDate";
 import WeatherIcon from "./WeatherIcon";
 import { useState } from "react/cjs/react.development";
 export default function WeatherInfo(props) {
-  const [units, setUnits] = useState("°C");
+  const [units, setUnits] = useState();
   function handleFahrenheit(event) {
     event.preventDefault();
     setUnits("°F");
