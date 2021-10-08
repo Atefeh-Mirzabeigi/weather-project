@@ -12,7 +12,6 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
   const [dailyWeather, setDailyWeather] = useState({ ready: false });
   function handleResponse(res) {
-    console.log(res.data, "1");
     setWeatherData({
       loaded: true,
       temp: res.data.main.temp,
@@ -29,7 +28,6 @@ export default function Weather(props) {
     handleForecast();
   }
   function handleForecastResponse(res) {
-    console.log(res.data.daily, "2");
     setDailyWeather({ data: res.data.daily, ready: true });
   }
   function handleForecast() {
