@@ -32,12 +32,12 @@ export default function Weather(props) {
   }
   function handleForecast() {
     const apiKey = "5ef18a61953b939c992cce84e77cc561";
-    const forecastUrl = `http://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely,hourly&lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}&units=metric`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely,hourly&lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}&units=metric`;
     axios.get(forecastUrl).then(handleForecastResponse);
   }
   function searchCityWeather() {
     const apiKey = "5ef18a61953b939c992cce84e77cc561";
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
 
