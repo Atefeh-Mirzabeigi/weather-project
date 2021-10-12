@@ -7,10 +7,7 @@ import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
-  const [lat, setLat] = useState(props.defaultLat);
-  const [lon, setLon] = useState(props.defaultLon);
   const [weatherData, setWeatherData] = useState({ loaded: false });
-  const [dailyWeather, setDailyWeather] = useState({ ready: false });
   function handleResponse(res) {
     setWeatherData({
       loaded: true,
@@ -22,25 +19,14 @@ export default function Weather(props) {
       feels_like: res.data.main.feels_like,
       cityName: res.data.name,
       date: new Date(res.data.dt * 1000),
+      coordinates: res.data.coord,
     });
-    setLat(res.data.coord.lat);
-    setLon(res.data.coord.lon);
-    handleForecast();
-  }
-  function handleForecastResponse(res) {
-    setDailyWeather({ data: res.data.daily, ready: true });
-  }
-  function handleForecast() {
-    const apiKey = "5ef18a61953b939c992cce84e77cc561";
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely,hourly&lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}&units=metric`;
-    axios.get(forecastUrl).then(handleForecastResponse);
   }
   function searchCityWeather() {
-    const apiKey = "5ef18a61953b939c992cce84e77cc561";
+    const apiKey = "e0fd97ef0bc3c4e53135648ec65c7fbf";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
-
   function handleSubmit(event) {
     event.preventDefault();
     searchCityWeather();
@@ -77,11 +63,12 @@ export default function Weather(props) {
           </div>
           <div className="col-md-4 col-sm-8 text-center py-4">
             <h3 className="py-2">{weatherData.cityName}</h3>
-            {dailyWeather.ready ? (
+            {/* {dailyWeather.ready ? (
               <Forecast data={dailyWeather.data} />
             ) : (
               <div>loading...</div>
-            )}
+            )} */}
+            <Forecast coordinates={weatherData.coordinates} />
           </div>
         </div>
       </div>

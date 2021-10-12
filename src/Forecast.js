@@ -1,33 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./forecast.css";
-import WeatherIcon from "./WeatherIcon";
+import axios from "axios";
+import ForecastDay from "./ForecastDay";
+
 export default function Forecast(props) {
-  //console.log(props.data, "4");
-  return (
-    <div className="Forecast">
-      {props.data.map((daily, i) => {
-        const daysOfWeek = ["Mon", "Tue", "Wed", "Thr", "Fri", "Sat", "Sun"];
-        const date = new Date(daily.dt * 1000);
-        const day = daysOfWeek[date.getDay()];
-        if (i < 5) {
-          return (
-            <div key={i} className="forecast-day d-flex justify-content-evenly">
-              <h5 className="pt-1">{day}</h5>
-              <WeatherIcon
-                code={daily.weather[0].icon}
-                size={25}
-                color="#E4513D"
-              />
-              <p>
-                {Math.round(daily.temp.max)}
-                <br />
-                <small>{Math.round(daily.temp.min)}</small>
-              </p>
-            </div>
-          );
-        }
-        return null;
-      })}
-    </div>
-  );
+  const [daily, setDaily] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
+  //if the coordinates change
+  // set the loaded false
+
+  function handleResponse(res) {
+    setLoaded(true);
+    setDaily(res.data.daily);
+    console.log(res.data.daily);
+  }
+
+  if (loaded) {
+    return (
+      <div className="Forecast">
+        {daily.map((daily, i) => {
+          if (i < 5) {
+            return (
+              <div key={i}>
+                <ForecastDay data={daily} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    );
+  } else {
+    const apiKey = "e0fd97ef0bc3c4e53135648ec65c7fbf";
+    const lat = props.coordinates.lat;
+    const lon = props.coordinates.lon;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely,hourly&lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}&units=metric`;
+    axios.get(forecastUrl).then(handleResponse);
+    return null;
+  }
 }
