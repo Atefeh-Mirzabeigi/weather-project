@@ -54,9 +54,9 @@ export default function Weather(props) {
                     <i className="bi bi-search"></i>
                   </button>
                 </div>
-                <a className="btn" href="/">
+                <div className="btn">
                   <i className="bi bi-geo-alt"></i>
-                </a>
+                </div>
               </div>
             </form>
             <AdditionalInfo data={weatherData} />

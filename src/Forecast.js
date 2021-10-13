@@ -4,7 +4,8 @@ import axios from "axios";
 import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
-  const [daily, setDaily] = useState(null);
+  //console.log(props.coordinates);
+  const [daily, setDaily] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -16,22 +17,21 @@ export default function Forecast(props) {
   function handleResponse(res) {
     setLoaded(true);
     setDaily(res.data.daily);
-    console.log(res.data.daily);
+    //console.log(res.data.daily);
   }
 
   if (loaded) {
     return (
       <div className="Forecast">
-        {daily.map((daily, i) => {
+        {daily.map((eachDay, i) => {
           if (i < 5) {
             return (
               <div key={i}>
-                <ForecastDay data={daily} />
+                <ForecastDay data={eachDay} />
               </div>
             );
-          } else {
-            return null;
           }
+          return null;
         })}
       </div>
     );
