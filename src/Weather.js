@@ -34,18 +34,34 @@ export default function Weather(props) {
   function handleCityChange(event) {
     setCity(event.target.value);
   }
+  function getCurrentLocation(event) {
+    event.preventDefault();
+    let position = navigator.geolocation.getCurrentPosition(setLocation);
+    console.log(position);
+    const apiUrl = "https://api.openweathermap.org/data/2.5/";
+    const apiKey = "e0fd97ef0bc3c4e53135648ec65c7fbf";
+    function setLocation(position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      axios
+        .get(
+          `${apiUrl}weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+        )
+        .then(handleResponse);
+    }
+  }
   if (weatherData.loaded) {
     return (
       <div className="weather mx-auto">
         <div className="row rounded justify-content-center">
           <div className="current-day col-md-8 col-sm-12">
             <WeatherInfo data={weatherData} />
-            <form onSubmit={handleSubmit}>
-              <div className="search text-center d-flex ms-5 me-3">
+            <div className="search text-center justify-content-center d-flex">
+              <form onSubmit={handleSubmit} className="mx-4">
                 <div className="input-group">
                   <input
                     type="search"
-                    className="form-control"
+                    className="form-control px-4"
                     placeholder="Enter location"
                     autoFocus="on"
                     onChange={handleCityChange}
@@ -54,11 +70,13 @@ export default function Weather(props) {
                     <i className="bi bi-search"></i>
                   </button>
                 </div>
-                <div className="btn">
+              </form>
+              <div>
+                <button className="mt-1" onClick={getCurrentLocation}>
                   <i className="bi bi-geo-alt"></i>
-                </div>
+                </button>
               </div>
-            </form>
+            </div>
             <AdditionalInfo data={weatherData} />
           </div>
           <div className="col-md-4 col-sm-8 text-center py-4">
